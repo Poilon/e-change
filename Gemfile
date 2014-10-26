@@ -6,13 +6,18 @@ gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'slim'
+gem 'simple_form'
+gem 'pry'
+gem 'i18n'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'spring',        group: :development
+gem 'spring', group: :development
 
 gem 'devise'
 

@@ -1,0 +1,20 @@
+h1= 'Your jobs'
+
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th= 'Job name'
+      th= 'Details'
+      th= 'Edit'
+      th= 'Not my job anymore'
+
+  tbody
+    - @jobs.each do |job|
+      tr
+        td= job.title
+        td= link_to(job.description[0, 30] + '...', job) if job.description
+        td= link_to 'Edit', edit_job_path(job)
+        td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
+br
+
+= link_to 'New Job', new_job_path

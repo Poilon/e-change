@@ -1,5 +1,11 @@
 p id='notice'
   = notice
 
+h2= @job.title
+
+= @job.description
+br
+
 = link_to 'Edit', edit_job_path(@job)
+br
 = link_to 'Back', jobs_path

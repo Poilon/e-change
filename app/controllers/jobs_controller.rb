@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.all
+    @jobs = current_user.jobs
   end
 
   def show
@@ -17,36 +17,25 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.save
+      current_user.jobs << @job
+      redirect_to @job, notice: 'Job was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
-        format.json { render :show, status: :ok, location: @job }
-      else
-        format.html { render :edit }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.update(job_params)
+      redirect_to @job, notice: 'Job was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to jobs_url, notice: 'Job was successfully destroyed.'
   end
 
   private
@@ -55,6 +44,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params[:job]
+      params.require(:job).permit(:title, :description)
     end
 end
