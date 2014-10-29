@@ -1,1 +1,22 @@
 h1= "Bienvenue ! Vous voulez trouver quelqu'un pour travailler pour vous ?"
+
+= form_tag(dashboard_search_path, method: 'get') do
+  = label_tag(:location, 'Where ? ')
+  = text_field_tag(:location)
+  = label_tag(:distance, 'Distance ')
+  = text_field_tag(:distance)
+  = 'km'
+  = submit_tag("Search")
+
+table.table.table-striped.table-bordered.table-hover
+  thead
+    tr
+      th= 'Job'
+      th= 'Description'
+      th= 'Location'
+  - @jobs.each do |job|
+    tbody
+      tr
+        td= job.title
+        td= job.description
+        td= job.address
