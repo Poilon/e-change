@@ -11,6 +11,7 @@ gem 'pry'
 gem 'i18n'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'geocoder'
 
 gem 'jquery-rails'
 gem 'turbolinks'

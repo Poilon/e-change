@@ -1,0 +1,10 @@
+h1 Welcome on E-Change
+
+- if current_user.nil?
+  = link_to t('welcome_new_user'), new_user_registration_path
+- else
+  .span1
+    = link_to "Vous cherchez quelqu'un", dashboard_index_path
+  br
+  .span1
+    = link_to "Vous proposez du travail", jobs_path
