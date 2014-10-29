@@ -5,9 +5,8 @@
       - @job.errors.full_messages.each do |message|
       li= message
 
-.container-fluid
-  = simple_form_for(@job) do |f|
-    = f.input :title, wrapper: :vertical_input_group
-    = f.input :description, wrapper: :vertical_input_group
-    = f.button :submit
+= simple_form_for(@job) do |f|
+  = f.input :title, wrapper: :vertical_input_group
+  = f.input :description, wrapper: :vertical_input_group
+  = f.button :submit
 br
