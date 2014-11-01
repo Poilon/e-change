@@ -1,19 +1,19 @@
-h1= "Bienvenue ! Vous voulez trouver quelqu'un pour travailler pour vous ?"
+h2= t('welcome_on_board')
 
 = form_tag(dashboard_search_path, method: 'get') do
-  = label_tag(:location, 'Where ? ')
+  = label_tag(:location, t('where') + ' ')
   = text_field_tag(:location)
-  = label_tag(:distance, 'Distance ')
+  = label_tag(:distance, t('distance') + ' ')
   = text_field_tag(:distance)
   = 'km'
-  = submit_tag("Search")
+  = submit_tag(t('search'))
 
 table.table.table-striped.table-bordered.table-hover
   thead
     tr
-      th= 'Job'
-      th= 'Description'
-      th= 'Location'
+      th= t('job')
+      th= t('description')
+      th= t('location')
   - @jobs.each do |job|
     tbody
       tr

@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= 'EChange'
+    = stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track' => true)
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    p.navbar-text.pull-right
+      - if user_signed_in?
+        = t('logged_in_as')
+        strong= current_user.email
+        = link_to t('edit_profile'), edit_user_registration_path, class: 'navbar-link'
+        = ' | '
+        = link_to t('log_out'), destroy_user_session_path, method: :delete, class: 'navbar-link'
+      - else
+        = link_to t('sign_up'), new_user_registration_path, class: 'navbar-link'
+        = ' | '
+        = link_to t('log_in'), new_user_session_path, class: 'navbar-link'
+  
+    - if notice
+      p.alert.alert-success
+        = notice
+    - if alert
+      p.alert.alert-danger
+        = alert
+    div.container-fluid
+      == yield
+  

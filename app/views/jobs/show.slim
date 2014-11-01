@@ -5,7 +5,9 @@ h2= @job.title
 
 = @job.description
 br
-
+= @job.address
+br
+br
 = link_to 'Edit', edit_job_path(@job)
 br
 = link_to 'Back', jobs_path

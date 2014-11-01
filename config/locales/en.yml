@@ -22,3 +22,12 @@
 en:
   hello: "Hello world"
   welcome_new_user: "Please subscribe to enter a whole new world of sharing"
+  email: "Email"
+  password: "Password"
+  remember_me: "Remember me?"
+  log_in: "Log in"
+  sign_up: "Sign up"
+  password_forgot: "Forgot your password ?"
+  edit_profile: "Edit your profile"
+  log_out: "Log out"
+  logged_in_as: "Logged in as"
