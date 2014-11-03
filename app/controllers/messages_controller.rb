@@ -12,8 +12,8 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    @job = params[:job]
-    respond_with(@message)
+    @job = Job.find(params[:job])
+    render :new
   end
 
   def edit
@@ -21,8 +21,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save
-    respond_with(@message)
+    if @message.save
+      redirect_to dashboard_index_path
+    else
+      render :new
+    end
   end
 
   def update
@@ -36,11 +39,12 @@ class MessagesController < ApplicationController
   end
 
   private
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
-    def message_params
-      params.require(:message).permit(:title, :description, :user_id)
-    end
+  def message_params
+    params.require(:message).permit(:title, :description, :user_id)
+  end
 end
