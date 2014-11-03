@@ -13,7 +13,7 @@ p id='notice'
 - if @job.user == current_user
   = link_to 'Edit', edit_job_path(@job)
 - else
-  = link_to 'Send Message', new_message_path(job: @job)
+  = mail_to @job.user.email
 
 
 br
