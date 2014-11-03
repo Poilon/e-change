@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+
   get 'dashboard/index'
   get 'dashboard/search'
 

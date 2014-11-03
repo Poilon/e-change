@@ -1,13 +1,20 @@
 p id='notice'
   = notice
 
-h2= @job.title
+.container.container-fluid  
+  h2= @job.title
+  
+  = @job.description
+  br
+  = @job.address
+  br
+  br
 
-= @job.description
-br
-= @job.address
-br
-br
-= link_to 'Edit', edit_job_path(@job)
+- if @job.user == current_user
+  = link_to 'Edit', edit_job_path(@job)
+- else
+  = link_to 'Send Message', new_message_path(job: @job)
+
+
 br
 = link_to 'Back', jobs_path

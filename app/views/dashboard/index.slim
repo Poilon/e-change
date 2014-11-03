@@ -17,6 +17,6 @@ table.table.table-striped.table-bordered.table-hover
   - @jobs.each do |job|
     tbody
       tr
-        td= job.title
+        td= link_to job.title, job_url(job)
         td= job.description
         td= job.address

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :user_jobs
   has_many :jobs, through: :user_jobs
+  has_many :messages
 
   validate :first_name
   validate :last_name
