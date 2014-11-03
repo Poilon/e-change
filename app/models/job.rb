@@ -1,6 +1,5 @@
 class Job < ActiveRecord::Base
-  has_many :user_jobs
-  has_many :users, through: :user_jobs
+  belongs_to :user
   
   geocoded_by :address
   after_validation :geocode

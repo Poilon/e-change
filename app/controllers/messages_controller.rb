@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @job = params[:job]
     respond_with(@message)
   end
 
