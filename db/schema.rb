@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141104164450) do
     t.integer  "user_id"
     t.integer  "note"
     t.text     "comment"
+    t.integer  "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

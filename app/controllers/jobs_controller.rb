@@ -31,10 +31,6 @@ class JobsController < ApplicationController
     redirect_to jobs_url, notice: 'Job was successfully destroyed.'
   end
 
-  def give_time
-    
-  end
-
   private
 
   def set_job

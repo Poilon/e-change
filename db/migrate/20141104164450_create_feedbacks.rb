@@ -4,6 +4,7 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.integer :user_id
       t.integer :note
       t.text :comment
+      t.integer :time
       t.timestamps
     end
   end
