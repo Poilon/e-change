@@ -5,20 +5,13 @@ class JobsController < ApplicationController
     @jobs = current_user.jobs
   end
 
-  def show
-  end
-
   def new
     @job = Job.new
   end
 
-  def edit
-  end
-
   def create
-    @job = Job.new(job_params)
+    @job = current_user.jobs.new(job_params)
     if @job.save
-      current_user.jobs << @job
       redirect_to @job, notice: 'Job was successfully created.'
     else
       render :new
@@ -38,12 +31,17 @@ class JobsController < ApplicationController
     redirect_to jobs_url, notice: 'Job was successfully destroyed.'
   end
 
-  private
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  def give_time
+    
+  end
 
-    def job_params
-      params.require(:job).permit(:title, :description, :address, :street, :city, :state, :country)
-    end
+  private
+
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  def job_params
+    job_params = params.require(:job).permit(:title, :description, :address)
+  end
 end

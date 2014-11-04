@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
-  get 'dashboard/search'
+  devise_for :users
 
-
-  get 'home/index'
-  root 'home#index'
   resources :jobs
 
-  devise_for :users
+  resource :dashboard
+
+  root 'homes#show'
 end

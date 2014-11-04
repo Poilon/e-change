@@ -3,17 +3,19 @@ p id='notice'
 
 .container.container-fluid  
   h2= @job.title
+  strong
   
-  = @job.description
-  br
-  = @job.address
+    = @job.description
+    br
+    br
+    = @job.address
   br
   br
 
 - if @job.user == current_user
   = link_to 'Edit', edit_job_path(@job)
 - else
-  = mail_to @job.user.email
+  = link_to @job.user.email, "mailto:#{@job.user.email}?subject=#{@job.title}&body=I'm interested by your job"
 
 
 br

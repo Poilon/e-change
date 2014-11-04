@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :jobs
+  has_many :feedbacks
 
   validate :first_name
   validate :last_name

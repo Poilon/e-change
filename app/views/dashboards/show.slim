@@ -1,11 +1,11 @@
 h2= t('welcome_on_board')
 
-= form_tag(dashboard_search_path, method: 'get') do
+= form_tag(:dashboard, method: 'get') do
   = label_tag(:location, t('where') + ' ')
   = text_field_tag(:location)
   = label_tag(:distance, t('distance') + ' ')
   = text_field_tag(:distance)
-  = 'km'
+  | km
   = submit_tag(t('search'))
 
 table.table.table-striped.table-bordered.table-hover

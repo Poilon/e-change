@@ -1,0 +1,14 @@
+h1 Welcome on E-Change
+
+- if current_user.nil?
+  = link_to t('welcome_new_user'), new_user_registration_path
+- else
+  .span1
+    = "Il vous reste #{current_user.time/60} heures et #{current_user.time%60} minutes à dépenser"
+
+  - if current_user.time > 0
+    .span1
+      = link_to 'Vous cherchez quelqu\'un', dashboard_path
+  br
+  .span1
+    = link_to 'Vous proposez du travail', jobs_path
