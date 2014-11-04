@@ -10,6 +10,9 @@
 
   = f.input :note, wrapper: :vertical_input_group
   = f.input :comment, wrapper: :vertical_input_group
-  = f.input :distant_email, as: :string, wrapper: :vertical_input_group
+  = label_tag 'distant_email', 'Email de l\'utilisateur'
+  br
+  = text_field_tag :distant_email, '', id: 'distant_email'
+  br
   = f.button :submit
 br

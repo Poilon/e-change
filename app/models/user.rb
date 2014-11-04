@@ -8,7 +8,4 @@ class User < ActiveRecord::Base
   validate :first_name
   validate :last_name
 
-  def time
-    time ? time : 0
-  end
 end

@@ -14,6 +14,7 @@ p id='notice'
 
 - if @job.user == current_user
   = link_to 'Give time and feedback', new_feedback_path
+  br
   = link_to 'Edit', edit_job_path(@job)
 - else
   = link_to @job.user.email, "mailto:#{@job.user.email}?subject=#{@job.title}&body=I'm interested by your job"

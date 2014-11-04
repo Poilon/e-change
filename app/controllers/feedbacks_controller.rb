@@ -7,13 +7,17 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @user = User.find_by_email(@feedback_params.delete(:distant_email))
-    @user.update_attribute(:time, @user.time + @feedback_params[:time])
-    current_time.update_attribute(:time, @user.time - @feedback_params[:time])
+    @user = User.find_by(email: params[:distant_email])
+    if @user
+      @user.update_attribute(:time, @user.time + feedback_params[:time].to_i)
+      current_user.update_attribute(:time, current_user.time - feedback_params[:time].to_i)
 
-    @feedback = @user.feedbacks.new(@feedback_params)
-    if @feedback.save
-      redirect_to @feedback, notice: 'feedback was successfully created.'
+      @feedback = @user.feedbacks.new(feedback_params)
+      if @feedback.save
+        redirect_to :jobs, notice: 'feedback was successfully created.'
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -39,7 +43,6 @@ class FeedbacksController < ApplicationController
   end
 
   def feedback_params
-    @feedback_params = params.require(:feedback).permit(:note, :comment, :time, :distant_email)
-    @feedback_params
+    params.require(:feedback).permit(:note, :comment, :time)
   end
 end
